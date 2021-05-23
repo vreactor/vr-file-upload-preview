@@ -25,7 +25,7 @@ import 'vr-file-upload-preview';
 
 Include available styles:
 ```javascript
-import "vr-file-upload-preview/style.min.css";
+import "vr-file-upload-preview/styles/index.min.css";
 ```
 
 ### Example
