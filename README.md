@@ -2,9 +2,17 @@
 
 # vr-file-upload-preview
 
+<p align="left">
+  <a href="https://www.npmjs.com/package/vr-file-upload-preview"><img src="https://img.shields.io/npm/v/vr-file-upload-preview.svg" alt="NPM Version"></a>
+  <a href="https://www.npmjs.com/package/vr-file-upload-preview"><img src="https://img.shields.io/npm/dm/vr-file-upload-preview.svg" alt="NPM Downloads"></a>
+  <a href="http://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
+</p>
+
 This is a custom element (web component - can be used every where regardless the framework).
 
 `vr-file-upload` aims to address the issue of showing a preview of a user's uploaded image.
+
+[Demo](https://vreactor.github.io/vr-file-upload-preview/)
 
 ### Installation
 
@@ -32,7 +40,7 @@ import "vr-file-upload-preview/styles/index.min.css";
 
 ```javascript
 // *.js
-const uploader = document.querySelector('vr-file-upload');
+const uploader = document.querySelector('vr-file-upload-preview');
 
 uploader.addEventListener('change', (e) => {
     console.log(e.detail.files);
