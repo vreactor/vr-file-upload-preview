@@ -4,7 +4,7 @@
 
 This is a custom element (web component - can be used every where regardless the framework).
 
-`vr-file-upload` aims to address the issue of showing a preview of a user's uploaded image
+`vr-file-upload` aims to address the issue of showing a preview of a user's uploaded image.
 
 ### Installation
 
