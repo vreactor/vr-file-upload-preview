@@ -1,0 +1,50 @@
+.vr-container {
+    max-width: 800px;
+    margin: 80px auto 0;
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.vr-header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__code {
+        margin-bottom: 10px;
+    }
+
+    &__header-content {
+        font-size: 40px;
+        margin-bottom: 30px;
+        margin-top: 0;
+        text-align: center;
+    }
+}
+
+.vr-card {
+    border-radius: 6px;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 2px 3px 10px var(--black-transparent-2);
+    min-height: 330px;
+}
+
+.vr-card-header {
+    border-bottom: 1px solid var(--black-transparent-1);
+    padding: 0;
+    padding-bottom: 7px;
+    line-height: 1.2;
+    white-space: normal;
+    text-transform: none;
+    letter-spacing: -0.8px;
+    margin: 0 0 16px 0;
+}
+
+.vr-card-content {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}

@@ -1,0 +1,77 @@
+{
+    "name": "vr-file-upload-preview",
+    "version": "0.0.0",
+    "description": "A simple file-upload lib that shows a preview of the uploaded image.",
+    "keywords": [
+        "javascript",
+        "js",
+        "file",
+        "image",
+        "upload",
+        "preview",
+        "file-upload",
+        "file-upload-preview"
+    ],
+    "np": {
+        "contents": "dist",
+        "yolo": true,
+        "anyBranch": true
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/VReactor/vr-file-upload-preview"
+    },
+    "bugs": {
+        "url": "https://github.com/VReactor/vr-file-upload-preview/issues"
+    },
+    "homepage": "https://github.com/VReactor/vr-file-upload-preview#readme",
+    "author": "Nikita Neroda",
+    "license": "MIT",
+    "main": "vr-file-upload-preview.umd.js",
+    "module": "vr-file-upload-preview.esm.js",
+    "unpkg": "vr-file-upload-preview.min.js",
+    "scripts": {
+        "start": "npx webpack serve --config webpack.dev.js --mode development",
+        "preview": "npm run build:demo && http-server dist",
+        "clean": "npx rimraf dist/",
+        "build:demo": "npx webpack --config webpack.dev.js --mode development",
+        "build:umd": "npx rollup --config rollup.config.js --format umd --file dist/vr-file-upload-preview.umd.js",
+        "build:es": "npx rollup --config rollup.config.js --format es --file dist/vr-file-upload-preview.esm.js",
+        "build:unpkg": "npx rollup --config rollup.config.js --format iife --file dist/vr-file-upload-preview.min.js",
+        "build:library": "npm run clean & npm run build:unpkg & npm run build:es & npm run build:umd & npm run build:unpkg",
+        "version": "npm run build:library",
+        "release": "npx np",
+        "postrelease": "git add package.json package-lock.json && git commit -m \"🎉 @vr-file-upload-preview version released 🎉\" && git push"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.0.0",
+        "@babel/preset-env": "^7.0.0",
+        "@fullhuman/postcss-purgecss": "^4.0.2",
+        "autoprefixer": "^10.2.5",
+        "babel-loader": "^8.2.2",
+        "css-loader": "^0.28.11",
+        "cssnano": "^3.10.0",
+        "file-loader": "^6.2.0",
+        "html-webpack-plugin": "^5.2.0",
+        "http-server": "^0.12.3",
+        "less": "^4.1.1",
+        "less-loader": "^8.1.1",
+        "minimist": "^1.2.5",
+        "postcss": "^8.3.0",
+        "postcss-loader": "^5.1.0",
+        "raw-loader": "^4.0.2",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.49.0",
+        "rollup-plugin-babel": "^4.4.0",
+        "rollup-plugin-commonjs": "^10.1.0",
+        "rollup-plugin-copy": "^3.4.0",
+        "rollup-plugin-less": "^1.1.3",
+        "rollup-plugin-node-resolve": "^5.2.0",
+        "rollup-plugin-terser": "^7.0.2",
+        "style-loader": "^2.0.0",
+        "url-loader": "^4.1.1",
+        "webpack": "^5.24.3",
+        "webpack-cli": "^4.5.0",
+        "webpack-dev-server": "^3.11.2"
+    }
+}

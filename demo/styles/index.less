@@ -1,0 +1,50 @@
+@import "./variables.less";
+@import "./toggle.less";
+@import "./input.less";
+@import "./form.less";
+@import "./card.less";
+@import "./button.less";
+@import "./table.less";
+@import "./scrollbar.less";
+@import "./github-corner.less";
+
+body {
+    font-family: "Roboto", sans-serif;
+    padding: 30px 20px;
+    color: var(--text-primary);
+}
+
+code {
+    color: var(--primary-darken);
+}
+
+pre {
+    padding: 6px 12px;
+    font-size: 14px;
+    color: var(--text-primary);
+    background-color: var(--grey-2);
+    border-radius: 4px;
+    overflow-x: auto;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+
+    &:hover {
+        color: var(--primary-darken);
+        text-decoration: underline;
+    }
+}
+
+[role=button], a, area, button, input:not([type=range]), label, select, summary, textarea {
+    touch-action: manipulation;
+}
+
+input[type=checkbox], input[type=radio] {
+    box-sizing: border-box;
+    padding: 0;
+}
+[role=button], a, area, button, input:not([type=range]), label, select, summary, textarea {
+    touch-action: manipulation;
+}

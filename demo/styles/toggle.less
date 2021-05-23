@@ -1,0 +1,130 @@
+.vr-toggle {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+    line-height: 1;
+    width: max-content;
+
+    input {
+        position: absolute;
+        left: 0;
+        top: 0;
+        min-width: 52px;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        opacity: 0;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+        overflow: visible;
+    }
+
+    input, &__state label {
+        min-width: 52px;
+    }
+
+    &__state {
+        line-height: 28px;
+        position: relative;
+
+        label {
+            position: initial;
+            display: inline-block;
+            font-weight: 400;
+            margin: 0;
+            text-indent: 64px;
+            min-width: 52px;
+            line-height: 1.2;
+            font-size: 16px;
+            color: var(--text-primary);
+            text-indent: 64px;
+            text-transform: unset;
+            text-indent: 64px;
+            text-transform: unset;
+
+            &:after,
+            &:before {
+                content: "";
+                width: 28px;
+                height: 28px;
+                display: block;
+                box-sizing: border-box;
+                border-radius: 0;
+                border: 1px solid transparent;
+                z-index: 0;
+                position: absolute;
+                left: 0;
+                top: 0;
+                background-color: transparent;
+            }
+
+            &:before {
+                border: 1px solid var(--grey-3);
+            }
+        }
+
+        &:before {
+            content: "";
+            border: 1px solid var(--grey-3);
+            border-radius: 16px;
+            width: 52px;
+            box-sizing: border-box;
+            height: 28px;
+            position: absolute;
+            top: 0;
+            z-index: 0;
+            transition: all 0.5s ease;
+        }
+    }
+}
+
+.vr-toggle .vr-toggle__state label:after,
+.vr-toggle .vr-toggle__state label:before {
+    transition: left 0.5s ease;
+    border-radius: 100%;
+    left: 0;
+    border-color: transparent;
+    transform: scale(0.8);
+}
+
+.vr-toggle .vr-toggle__state label:after {
+    background-color: var(--grey-3) !important;
+}
+
+.vr-toggle input:checked ~ .vr-toggle__state:before {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.vr-toggle input:checked ~ .vr-toggle__state label:before {
+    opacity: 0;
+}
+
+.vr-toggle input:checked ~ .vr-toggle__state label:after {
+    background-color: var(--white) !important;
+    left: 24px;
+}
+
+input:disabled,
+input:disabled + .vr-toggle__state {
+    cursor: default;
+    pointer-events: none;
+}
+
+input:disabled + .vr-toggle__state label {
+    opacity: 0.5;
+}
+
+:not(.vr-toggle) input:disabled + .vr-toggle__state label:before {
+    background-color: var(--grey-3);
+}
+
+.vr-toggle input:disabled + .vr-toggle__state label:before,
+.vr-toggle input:disabled + .vr-toggle__state label:after {
+    background-color: var(--grey-4) !important;
+}
+
+.vr-toggle input:disabled + .vr-toggle__state:before {
+    background-color: var(--grey-3);
+}
