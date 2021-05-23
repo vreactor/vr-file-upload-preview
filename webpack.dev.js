@@ -4,7 +4,7 @@ module.exports = {
     devtool: 'eval-cheap-module-source-map',
     entry: './demo/index.js',
     devServer: {
-        port: 8080,
+        port: 8081,
         hot: true,
         inline: true,
         watchContentBase: true
