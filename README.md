@@ -1,4 +1,4 @@
-<p align="center"><a href="" target="_blank"><img src="src/assets/demo.gif"></a></p>
+<p align="center"><a href="" target="_blank"><img src="demo/assets/demo.gif"></a></p>
 
 # vr-file-upload-preview
 
