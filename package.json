@@ -44,7 +44,7 @@
         "build:umd": "npx rollup --config rollup.config.js --format umd --file dist/vr-file-upload-preview.umd.js",
         "build:es": "npx rollup --config rollup.config.js --format es --file dist/vr-file-upload-preview.esm.js",
         "build:unpkg": "npx rollup --config rollup.config.js --format iife --file dist/vr-file-upload-preview.min.js",
-        "build:library": "npm run clean & npm run build:unpkg & npm run build:es & npm run build:umd & npm run build:unpkg",
+        "build:library": "npm run clean & npm run build:unpkg & npm run build:es & npm run build:umd & npm run build:unpkg & node ./.tools/prepublish/transform-json.js package.json",
         "version": "npm run build:library",
         "release": "npx np",
         "postrelease": "git add package.json package-lock.json && git commit -m \"🎉 @vr-file-upload-preview version released 🎉\" && git push"
