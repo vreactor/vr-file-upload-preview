@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>vr-file-upload-preview</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://unpkg.com/normalize.css@8.0.1/normalize.css"
+        />
+    <link rel="icon" href="favicon.ico"><script defer src="main.js"></script></head>
+
+    <body>
+        <div role="banner">
+            <a
+                href="https://github.com/VReactor/vr-file-upload-preview"
+                target="_blank"
+                class="github-corner"
+                aria-label="View source on Github"
+                ><svg
+                    width="80"
+                    height="80"
+                    viewBox="0 0 250 250"
+                    style="
+                        fill: #4264eb;
+                        color: #fff;
+                        position: absolute;
+                        top: 0;
+                        border: 0;
+                        right: 0;
+                    "
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"
+                    ></path>
+                    <path
+                        d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+                        fill="currentColor"
+                        style="transform-origin: 130px 106px"
+                        class="octo-arm"
+                    ></path>
+                    <path
+                        d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+                        fill="currentColor"
+                        class="octo-body"
+                    ></path>
+                </svg>
+            </a>
+            <div class="vr-header-container">
+                <h1 class="vr-header-container__header-content">vr-file-upload-preview</h1>
+                <div class="vr-header-container__code">
+                    <pre>npm i vr-file-upload-preview</pre>
+                </div>
+                <a
+                    href="https://github.com/VReactor/vr-file-upload-preview"
+                    target="_blank"
+                    class="vr-header-container__link"
+                >
+                    View the source code on GitHub
+                </a>
+            </div>
+        </div>
+
+        <div class="vr-container">
+            <div class="vr-card">
+                <h2 class="vr-card-header">Playground</h2>
+
+                <div class="vr-card-content">
+                    <div class="vr-form-grid">
+                        <div class="vr-form-group">
+                            <label for="max-files" for="max-files">Max files</label>
+                            <input type="text" id="max-files" />
+                        </div>
+
+                        <div class="vr-form-group">
+                            <label for="max-size" for="max-size">Max size</label>
+                            <input type="text" id="max-size" />
+                        </div>
+
+                        <div class="vr-form-group">
+                            <label for="input" for="accept">Accept</label>
+                            <input type="text" id="accept" />
+                        </div>
+                    </div>
+
+                    <div class="vr-form-grid">
+                        <div class="vr-form-group">
+                            <div class="vr-toggle">
+                                <input type="checkbox" id="multiple" />
+                                <div class="vr-toggle__state">
+                                    <label>Multiple</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="vr-form-devider">
+
+                    <vr-file-upload-preview
+                        class="custom-class"
+                        accept=".png,.jpg,.jpeg,.gif"
+                        multiple
+                    >
+                        <button class="vr-button vr-button--primary">Upload</button>
+                    </vr-file-upload-preview>
+                </div>
+            </div>
+
+            <div class="vr-card">
+                <h2 class="vr-card-header">Example</h2>
+
+                <pre data-language="html"></pre>
+                <pre data-language="javascript"></pre>
+            </div>
+
+            <div class="vr-card">
+                <h2 class="vr-card-header">API Reference</h2>
+
+                <h3>Attributes</h3>
+
+                <div class="vr-table-container">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <code>accept</code>
+                                </td>
+                                <td>
+                                    Acceptable file types can be specified with the
+                                    accept attribute, which takes a comma-separated
+                                    list of allowed file extensions or MIME types.
+
+                                    <pre>accept="image/png, image/jpeg"</pre>
+                                    <pre>accept=".png, .jpg, .jpeg, .pdf"</pre>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>multiple</code>
+                                </td>
+                                <td>
+                                    The multiple attribute allows you to specify multiple files at the same time in the file upload field.
+
+                                    <pre>multiple</pre>
+                                    <pre>multiple="true"</pre>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>max-files</code>
+                                </td>
+                                <td>
+                                    Maximum number of files.
+
+                                    <pre>max-files="3"</pre>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>max-size</code>
+                                </td>
+                                <td>
+                                    Maximum file size, the value is specified in bytes.
+
+                                    <pre>max-size="5000"</pre>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>preview</code>
+                                </td>
+                                <td>
+                                    Allows you to specify your own container for displaying file previews through a
+                                    selector or a group of selectors.
+
+                                    <pre>preview=".custom-preview"</pre>
+                                    <pre>preview="#custom-preview"</pre>
+                                    <pre>preview=".custom-preview.custom-wrapper"</pre>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Events</h3>
+
+                <div class="vr-table-container">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <code>change</code>
+                                </td>
+                                <td>
+                                    Triggered each time file/files are selected. Delivers the array of files.
+                                    <br><br>
+                                    <div>
+                                        value: <code>event.detail</code>
+                                    </div>
+                                    <div>
+                                        <pre>{files: <code>Array&lt;File&gt;</code>}</pre>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>error</code>
+                                </td>
+                                <td>
+                                    Triggered each time an error occurs while selecting a file / files. Delivers file and error type.
+                                    <br><br>
+                                    <div>
+                                        value: <code>event.detail</code>
+                                    </div>
+                                    <div>
+                                        <pre>{type: <code>"FORMAT" | "MAX_FILES" | "MAX_SIZE"</code>, file: <code>File</code>}</pre>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
