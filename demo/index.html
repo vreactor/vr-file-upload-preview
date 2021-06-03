@@ -69,7 +69,7 @@
         </div>
 
         <div class="vr-container">
-            <div class="vr-card">
+            <div class="vr-card vr-card--height-auto">
                 <h2 class="vr-card-header">Playground</h2>
 
                 <div class="vr-card-content">
@@ -100,11 +100,37 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <hr class="vr-form-devider">
+            <div class="vr-card">
+                <h2 class="vr-card-header">Demo with a drop zone</h2>
 
+                <div class="vr-card-content">
                     <vr-file-upload-preview
-                        class="custom-class"
+                        class="dropzone-uploader"
+                        accept=".png,.jpg,.jpeg,.gif"
+                        multiple
+                        dropzone
+                    >
+                        <div class="vr-drop-zone">
+                            <div class="vr-drop-zone__wrapper">
+                                <div class="vr-drop-zone__content">
+                                    <img src="assets/icons/download.svg" alt="download" class="vr-drop-zone-icon">
+                                    <b>Drop your files here!</b>
+                                </div>
+                            </div>
+                        </div>
+                    </vr-file-upload-preview>
+                </div>
+            </div>
+
+            <div class="vr-card">
+                <h2 class="vr-card-header">Demo with button</h2>
+
+                <div class="vr-card-content">
+                    <vr-file-upload-preview
+                        class="button-uploader"
                         accept=".png,.jpg,.jpeg,.gif"
                         multiple
                     >
@@ -146,7 +172,7 @@
                                     <code>multiple</code>
                                 </td>
                                 <td>
-                                    The multiple attribute allows you to specify multiple files at the same time in the file upload field.
+                                    The multiple attribute allows the user to specify multiple files at the same time in the file upload field.
 
                                     <pre>multiple</pre>
                                     <pre>multiple="true"</pre>
@@ -183,6 +209,17 @@
                                     <pre>preview=".custom-preview"</pre>
                                     <pre>preview="#custom-preview"</pre>
                                     <pre>preview=".custom-preview.custom-wrapper"</pre>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>dropzone</code>
+                                </td>
+                                <td>
+                                    The dropzone attribute allows the user to drag files to the drop zone.
+
+                                    <pre>dropzone</pre>
+                                    <pre>dropzone="true"</pre>
                                 </td>
                             </tr>
                         </tbody>

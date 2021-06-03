@@ -1,5 +1,5 @@
 import 'vr-file-upload-preview';
-import "vr-file-upload-preview/style.min.css";
+import 'vr-file-upload-preview/vr-file-upload-preview.min.css';
 
 const uploader = document.querySelector('vr-file-upload-preview');
 

@@ -1,0 +1,37 @@
+.vr-drop-zone {
+    background-color: #eaf1ff;
+    height: 180px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.2s ease-out, padding 0.2s ease-out;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 20px;
+
+    &__wrapper {
+        border: 1px dashed var(--grey-4);
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    &.vr-highlight-dropzone {
+        background-color: #d8e4fc;
+        padding: 15px;
+    }
+}
+
+.vr-drop-zone-icon {
+    filter: invert(44%) sepia(84%) saturate(2006%) hue-rotate(211deg) brightness(101%) contrast(95%);
+    width: 50px;
+}
