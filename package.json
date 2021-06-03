@@ -35,9 +35,9 @@
     "unpkg": "vr-file-upload-preview.min.js",
     "scripts": {
         "start": "npx webpack serve --config webpack.dev.js --mode development",
-        "preview": "npm run build:demo && http-server dist",
+        "preview": "npm run build:demo && http-server dist-demo",
         "predeploy": "npm run build:demo",
-        "deploy": "npx gh-pages -d dist",
+        "deploy": "npx gh-pages -d dist-demo",
         "clean:demo": "npx rimraf dist-demo/",
         "clean:lib": "npx rimraf dist/",
         "build:demo": "npm run clean:demo & npx webpack --config webpack.prod.js --mode production",
