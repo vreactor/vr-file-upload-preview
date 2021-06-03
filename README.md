@@ -113,12 +113,6 @@ uploader.addEventListener('error', (e) => {
 | change | Triggered each time file/files are selected. Delivers the array of files. <br/> value: `event.detail` <br/> `{files: Array<File>}` |
 | error | Triggered each time an error occurs while selecting a file / files. Delivers file and error type. <br/> value: `event.detail` <br/> `{type: "FORMAT" \| "MAX_FILES" \| "MAX_SIZE", file: File}`  |
 
-<style>
-    table {
-        width: 100%;
-    }
-</style>
-
 ## Testing
 
 Use `npm run test` to run the tests.
