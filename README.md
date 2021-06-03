@@ -49,7 +49,6 @@ If you don't want to include vr-file-upload-preview files in your project, you m
 <link rel="stylesheet" href="https://unpkg.com/vr-file-upload-preview/vr-file-upload-preview.css" />
 
 <script src="https://unpkg.com/vr-file-upload-preview/vr-file-upload-preview.min.js"></script>
-<script src="https://unpkg.com/vr-file-upload-preview/vr-file-upload-preview.esm.js"></script>
 ```
 
 If you use ES modules in browser, there is a CDN version for that too:
