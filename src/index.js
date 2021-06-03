@@ -148,7 +148,7 @@ customElements.define(
             });
             shadowRoot.appendChild(this.inputRef);
             this.inputRef.insertAdjacentElement('afterend', slot);
-            this.uploadRef = slot.assignedNodes()[1];
+            this.uploadRef = slot.assignedNodes()?.find(node => node.nodeType === 1);
 
             this.buildPreviewPanel();
             this.setEventListners();
