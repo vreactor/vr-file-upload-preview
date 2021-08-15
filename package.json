@@ -1,6 +1,6 @@
 {
     "name": "vr-file-upload-preview",
-    "version": "1.1.0",
+    "version": "1.0.0",
     "description": "A simple file-upload lib that shows a preview of the uploaded image.",
     "keywords": [
         "javascript",
