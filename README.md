@@ -108,6 +108,14 @@ uploader.addEventListener('error', (e) => {
 
 <br/>
 
+| Methods | Description |
+| --- | --- |
+| upload | Uploading files. <br/> parameters: `value` <br/> `value: Blob \| Array<Blob>` |
+| remove | Removing a file by index. <br/> parameters: `index` <br/> `value: number`  |
+| clear | Cleans up all files.  |
+
+<br/>
+
 | Events | Description |
 | --- | --- |
 | change | Triggered each time file/files are selected. Delivers the array of files. <br/> value: `event.detail` <br/> `{files: Array<File>}` |

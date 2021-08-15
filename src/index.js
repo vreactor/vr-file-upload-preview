@@ -1,6 +1,13 @@
 import './styles/index.less';
 
-import { changeAttributes, createElement, dispatchEvent, getSize } from './utils';
+import {
+    changeAttributes,
+    createElement,
+    dispatchEvent,
+    getSize,
+    mimeConvert,
+    uuidv4
+} from './utils';
 
 export const VR_FILE_ERROR_TYPE = {
     FORMAT: 'FORMAT',
@@ -35,24 +42,36 @@ customElements.define(
             return ['preview', 'multiple', 'accept', 'max-files', 'max-size'];
         }
 
-        /** A selector or group of selectors pointing to the container for previewing files. */
+        /**
+         * A selector or group of selectors pointing to the container for previewing files.
+         * @returns {string}
+         */
         get preview() {
             return this.getAttribute('preview');
         }
 
-        /** Acceptable file types. */
+        /**
+         * Acceptable file types.
+         * @returns {string}
+         */
         get accept() {
             return this.getAttribute('accept');
         }
 
-        /** Multiple selection of files. */
+        /**
+         * Multiple selection of files.
+         * @returns {boolean}
+         */
         get multiple() {
             const value = this.getAttribute('multiple');
 
             return value === '' || value === 'true';
         }
 
-        /** Maximum number of files. */
+        /**
+         * Maximum number of files.
+         * @returns {number | null}
+         */
         get maxFiles() {
             const value = parseInt(this.getAttribute('max-files'));
 
@@ -66,7 +85,10 @@ customElements.define(
             return !isNaN(value) ? value : null;
         }
 
-        /** File drag and drop. */
+        /**
+         * File drag and drop.
+         * @returns {boolean}
+         */
         get dropzone() {
             const value = this.getAttribute('dropzone');
 
@@ -179,38 +201,6 @@ customElements.define(
             this.filesHandler(files)
         }
 
-        filesHandler(files) {
-            const cache = [];
-
-            if (!files.length) {
-                return;
-            }
-
-            this.inputRef.value = '';
-            Array.from(files).forEach((file, index) => {
-                const errorType = this.errorHandler(file, index);
-
-                if (errorType) {
-                    return dispatchEvent('error', this, {
-                        file,
-                        type: errorType,
-                    });
-                }
-
-                if (this.files.some(value => value.name === file.name && value.size === file.size)) {
-                    return;
-                }
-
-                this.buildTemplate(file);
-                cache.push(file);
-            });
-
-            if (cache.length) {
-                this.files = [...this.files, ...cache];
-                dispatchEvent('change', this, { files: this.files });
-            }
-        }
-
         errorHandler(file, count) {
             const accept = this.accept?.replace(/ /g,'');
 
@@ -229,6 +219,102 @@ customElements.define(
             return;
         }
 
+        filesHandler(files) {
+            const cache = [];
+
+            if (!files.length) {
+                return;
+            }
+
+            this.inputRef.value = '';
+
+            Array.from(files).forEach((file, index) => {
+                const errorType = this.errorHandler(file, index);
+
+                if (errorType) {
+                    return dispatchEvent('error', this, {
+                        file,
+                        type: errorType,
+                    });
+                }
+
+                if (!file.name) {
+                    const name = uuidv4();
+                    const format = mimeConvert(file.type);
+
+                    file.name = name + format;
+                }
+
+                if (this.files.some(value => value.name === file.name && value.size === file.size)) {
+                    return;
+                }
+
+                this.buildTemplate(file);
+                cache.push(file);
+            });
+
+            if (cache.length) {
+                this.files = [...this.files, ...cache];
+                dispatchEvent('change', this, { files: this.files });
+            }
+        }
+
+        /**
+         * Upload file.
+         * @param {Blob | Array<Blob>} value - File or array of files.
+         * @returns {void}
+         */
+        upload(value) {
+            if (Array.isArray(value) && !value.length || !Array.isArray(value) && !value) {
+                return;
+            }
+
+            const array = Array.isArray(value) ? value : [value];
+            const files = array.filter(file => file instanceof Blob);
+
+            this.filesHandler(files);
+        }
+
+        /**
+         * Remove file by index.
+         * @param {number} index - Index from `files`.
+         * @returns {void}
+         */
+        remove(index) {
+            if(index + 1 > this.files.length) {
+                return
+            }
+
+            this.files.splice(index, 1);
+            dispatchEvent('change', this, { files: this.files });
+
+            for (var i = 0; i < this.containerRef.children.length; i++) {
+                if (i == index) {
+                    this.containerRef.children[i].parentNode.removeChild(this.containerRef.children[i]);
+                    break;
+                }
+            }
+
+            if (!this.files.length) {
+                this.inputRef.value = '';
+            }
+        }
+
+        /**
+         * Clear all files.
+         * @returns {void}
+         */
+        clear() {
+            while (this.containerRef.firstChild) {
+                this.containerRef.removeChild(this.containerRef.lastChild);
+            }
+
+            this.inputRef.value = '';
+            this.files = [];
+
+            dispatchEvent('change', this, { files: this.files });
+        }
+
         buildPreviewPanel() {
             this.containerRef?.remove();
             this.containerRef = document.querySelector(this.preview);
@@ -244,7 +330,7 @@ customElements.define(
         buildTemplate(file) {
             if (!file.type.match('image')) {
                 this.containerRef.insertAdjacentHTML(
-                    'afterbegin',
+                    'beforeend',
                     this.getTemplatePreviewImage(file)
                 );
 
@@ -254,7 +340,7 @@ customElements.define(
             const reader = new FileReader();
 
             reader.onload = ({target}) => this.containerRef.insertAdjacentHTML(
-                'afterbegin',
+                'beforeend',
                 this.getTemplatePreviewImage(file, target.result)
             );
             reader.readAsDataURL(file);
@@ -313,17 +399,6 @@ customElements.define(
 
             // Handle dropped files
             this.uploadRef[action]('drop', this.onDrop)
-        }
-
-        clear() {
-            while (this.containerRef.firstChild) {
-                this.containerRef.removeChild(this.containerRef.lastChild);
-            }
-
-            this.inputRef.value = '';
-            this.files = [];
-
-            dispatchEvent('change', this, { files: this.files });
         }
 
         getShortName(value, max = 12) {

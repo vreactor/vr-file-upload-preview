@@ -3,6 +3,8 @@ import './styles/index.less';
 import '../src/index.js';
 import '../src/styles/index.less';
 
+const URLS_IMAGES = ['https://i.ibb.co/QJwDg3f/i-love-javascript.png', 'https://i.ibb.co/5RzgdHr/cat.gif'];
+
 const previewHtml = document.querySelector('[data-language="html"]');
 const previewJs = document.querySelector('[data-language="javascript"]');
 
@@ -50,15 +52,24 @@ maxSize.addEventListener('change', e => {
 [btnUploader, dropUploader].forEach(element => {
     element.addEventListener('change', (e) => {
         console.log(element.className, e.detail.files);
-        // console.log(uploader.files);
+        // console.log(btnUploader.files);
     });
 });
 
 [btnUploader, dropUploader].forEach(element => {
-    btnUploader.addEventListener('error', (e) => {
+    element.addEventListener('error', (e) => {
         const {file, type} = e.detail;
 
         console.log(element.className, {file, type});
     });
 });
 
+getImages(URLS_IMAGES)
+    .then(images => btnUploader.upload(images));
+
+
+function getImages(urls) {
+    const blobs = urls.map(url => fetch(url).then(res => res.blob()));
+
+    return Promise.all(blobs);
+}
