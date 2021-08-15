@@ -13,7 +13,7 @@
         "file-upload-preview"
     ],
     "np": {
-        "contents": "dist",
+        "contents": "./dist",
         "anyBranch": true
     },
     "publishConfig": {
